@@ -98,6 +98,28 @@
             margin: 20px 0;
             border-radius: 50px;
         }
+        .repeat-button {
+            width: 200px;
+            padding: 12px 25px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            box-shadow: 0 5px 0 #CC7000;
+            transition: all 0.3s;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .repeat-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #CC7000;
+        }
+        .repeat-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 3px 0 #CC7000;
+        }
     </style>
 </head>
 <body>
@@ -118,6 +140,7 @@
         </audio>
         
         <button class="next-button" id="nextBtn">Далее</button>
+        <button class="repeat-button" id="repeatBtn" style="display: none;">Повтор</button>
     </div>
 
     <script>
@@ -125,7 +148,7 @@
             {
                 text: `"Плакали, плакали батареи и трубы
                 Я целую, целую, твои нежные губы
-                И мало ли, и мало ли, что подумают люди
+                И мало ли, мало ли, что подумают люди
                 Я такую, такую, никогда не забуду"`,
                 artist: "Нервы - Батареи",
                 audio: "https://mp3uk.net/mp3/files/nervy-batarei-mp3.mp3",
@@ -392,6 +415,7 @@
         const quoteElement = document.getElementById('quote');
         const artistElement = document.getElementById('artist');
         const nextBtn = document.getElementById('nextBtn');
+        const repeatBtn = document.getElementById('repeatBtn');
         const audioPlayer = document.getElementById('audioPlayer');
         const songPhoto = document.getElementById('songPhoto');
         let currentQuote = 0;
@@ -401,8 +425,17 @@
             quoteElement.textContent = quote.text;
             artistElement.textContent = quote.artist;
             audioPlayer.src = quote.audio;
-            songPhoto.src = quote.image || 'https://i.postimg.cc/8P7WZJQK/default.jpg'; // Добавлено изображение по умолчанию
+            songPhoto.src = quote.image || 'https://i.postimg.cc/8P7WZJQK/default.jpg';
             songPhoto.alt = quote.artist;
+            
+            // Показываем/скрываем кнопки в зависимости от текущей песни
+            if (index === quotes.length - 1) {
+                nextBtn.style.display = 'none';
+                repeatBtn.style.display = 'block';
+            } else {
+                nextBtn.style.display = 'block';
+                repeatBtn.style.display = 'none';
+            }
             
             // Добавляем обработчик для автоматического воспроизведения
             audioPlayer.load();
@@ -422,6 +455,11 @@
                 currentQuote = 0;
                 loadQuote(currentQuote);
             }
+        });
+
+        repeatBtn.addEventListener('click', () => {
+            currentQuote = 0;
+            loadQuote(currentQuote);
         });
     </script>
 </body>
