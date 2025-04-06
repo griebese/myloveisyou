@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЖМЯК-кнопки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f5f5f5;
+            flex-direction: column;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        .button {
+            width: 250px;
+            padding: 15px 25px;
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 50px; /* Сильное скругление */
+            cursor: pointer;
+            background: linear-gradient(135deg, #BA55D3, #9400D3);
+            box-shadow: 0 8px 0 #6A0DAD, 0 15px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.1s, box-shadow 0.1s;
+            position: relative;
+            top: 0;
+            font-weight: bold;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+        }
+        .button:hover {
+            background: linear-gradient(135deg, #C767E0, #9E1AD9);
+        }
+        .button:active {
+            top: 5px;
+            box-shadow: 0 3px 0 #6A0DAD, 0 5px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(0.98);
+        }
+        h1 {
+            color: #9400D3;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>ЖМЯКНИ МЕНЯ!</h1>
+    <div class="button-container">
+        <button class="button" id="btn1">ЖМЯК если тебе грустно</button>
+        <button class="button" id="btn2">ЖМЯК если тебе скучно</button>
+        <button class="button" id="btn3">ЖМЯК.. ну просто ЖМЯК</button>
+    </div>
+
+    <!-- Скрытый аудиоэлемент для звука -->
+    <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3" preload="auto"></audio>
+
+    <script>
+        // Звук при клике на любую кнопку
+        const buttons = document.querySelectorAll('.button');
+        const clickSound = document.getElementById('clickSound');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                clickSound.currentTime = 0; // Перемотка звука в начало
+                clickSound.play();
+                
+                // Дополнительные действия для каждой кнопки
+                if (this.id === 'btn1') {
+                    alert('Не грусти! Вот тебе виртуальный цветок 🌸');
+                } else if (this.id === 'btn2') {
+                    alert('Лови идею: порисуй звёзды на окне! ✨');
+                } else {
+                    const messages = [
+                        'Ты великолепен!',
+                        'ЖМЯК — это сила!',
+                        'Улыбнись, как будто ты только что жмякнул!'
+                    ];
+                    alert(messages[Math.floor(Math.random() * messages.length)]);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
