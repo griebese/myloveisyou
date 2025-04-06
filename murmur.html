@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Музыкальные цитаты</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1f1f1f, #0a0a0a);
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 600px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+        .quote {
+            font-size: 20px;
+            line-height: 1.6;
+            margin: 20px 0;
+            white-space: pre-line;
+        }
+        .artist {
+            font-style: italic;
+            color: #BA55D3;
+            margin-top: 10px;
+        }
+        .next-button {
+            width: 200px;
+            padding: 12px 25px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #BA55D3, #9400D3);
+            box-shadow: 0 5px 0 #6A0DAD;
+            transition: all 0.3s;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .next-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #6A0DAD;
+        }
+        .next-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 3px 0 #6A0DAD;
+        }
+        .glitch {
+            animation: glitch-effect 3s infinite;
+        }
+        @keyframes glitch-effect {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(3px, -3px); }
+            60% { transform: translate(0); }
+            80% { transform: translate(-2px, 2px); }
+        }
+        h1 {
+            color: #BA55D3;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(186, 85, 211, 0.5);
+        }
+        audio {
+            width: 100%;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container glitch">
+        <h1>Музыкальные цитаты</h1>
+        
+        <div class="photo-placeholder">🎵</div>
+        
+        <div class="quote" id="quote">
+            "Я слишком влюблён
+            Ты в каждой моей мысли, ты - вирус
+            Я снова буду ждать тебя дома
+            В бессмысленном поиске глаз"
+        </div>
+        
+        <div class="artist" id="artist">Нервы - Я слишком влюблён</div>
+        
+        <audio controls id="audioPlayer">
+            <source src="" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио элемент.
+        </audio>
+        
+        <button class="next-button" id="nextBtn">Далее</button>
+    </div>
+
+    <script>
+        const quotes = [
+            {
+                text: `"Я слишком влюблён
+                Ты в каждой моей мысли, ты - вирус
+                Я снова буду ждать тебя дома
+                В бессмысленном поиске глаз"`,
+                artist: "Нервы - Я слишком влюблён",
+                audio: "https://mp3uk.net/mp3/files/nervy-ya-slishkom-vlyublen-mp3.mp3"
+            },
+            {
+                text: `"Мы с тобою танцевали
+                В тёмном и пустом зале
+                Танцевали, танцевали
+                В паре!"`,
+                artist: "Иван Курочкин - Танцевали",
+                audio: "https://mp3uk.net/mp3/files/ivan-kurochkin-tantsevali-mp3.mp3"
+            },
+            {
+                text: `"Люби меня днями-ночами
+                Окутаны тенями печали
+                Будто бы мы в самом начале
+                Днями-ночами, днями-ночами"`,
+                artist: "pyrokinesis, МУККА - Днями-ночами",
+                audio: "https://mp3uk.net/mp3/files/pyrokinesis-mukka-dnyami-nochami-mp3.mp3"
+            },
+            {
+                text: `"Ментальная коррозия, любовь и микродозинг
+                Я люблю твои глаза, ведь они синие, как озеро
+                Глотаю это месиво из фэшна и скорости
+                Я синий, как глаза твои, синие, как озеро"`,
+                artist: "СМН, МУККА - паранойя",
+                audio: "https://mp3uk.net/mp3/files/smn-mukka-paranoya-mp3.mp3"
+            },
+            {
+                text: `"Для тебя, конечно, есть звёзды
+                Для тебя, конечно, весь космос, всё (пробуй, собери со дна)
+                Нам достанется лишь то, что не получится забрать (никогда)"`,
+                artist: "mzlff - для тебя",
+                audio: "https://mp3uk.net/mp3/files/mzlff-dlya-tebya-mp3.mp3"
+            },
+            {
+                text: `"Я хочу быть с тобой
+                Я хочу быть с тобой
+                Я так хочу быть с тобой
+                Я хочу быть с тобой, и я буду с тобой"`,
+                artist: "Nautilus Pompilius - Я хочу быть с тобой",
+                audio: "https://mp3uk.net/mp3/files/nautilus-pompilius-ya-hochu-byt-s-toboy-mp3.mp3"
+            },
+            {
+                text: `"Позови меня с собой
+                Я приду сквозь злые ночи
+                Я отправлюсь за тобой
+                Что бы путь мнени пророчил
+                Я приду туда, где ты
+                Нарисуешь в небе солнце
+                Где разбитые мечты
+                Обретают снова силу высоты"`,
+                artist: "Palina - Позови меня с собой",
+                audio: "https://mp3uk.net/mp3/files/palina-pozovi-menya-s-soboy-mp3.mp3"
+            },
+            {
+                text: `"Если хочешь плакать, то я буду плакать тоже
+                Я надену платье, буду на тебя похожий
+                Можешь не смотреть и называть меня как хочешь
+                Всё вокруг тупое, поэтому я с тобою"`,
+                artist: "ssshhhiiittt - танцы",
+                audio: "https://mp3uk.net/mp3/files/ssshhhiiittt-tantsy-mp3.mp3"
+            },
+            {
+                text: `"Как тебя покорить?
+                Как тебя покорить? Не знаю я
+                Не проходит без этой мысли дня, не проходит и дня
+                Как тебя покорить?
+                Укажи мне какой-нибудь намёк
+                Близок я или также всё далёк? Или очень далёк"`,
+                artist: "Перемотка - Как тебя покорить?",
+                audio: "https://mp3uk.net/mp3/files/peremotka-kak-tebya-pokorit-mp3.mp3"
+            },
+            {
+                text: `"Ты самая красивая
+                Ты самая желанная
+                Ты самая любимая
+                Ты счастье долгожданное"`,
+                artist: "Mada - самая (The most)",
+                audio: "https://mp3uk.net/mp3/files/mada-samaya-the-most-mp3.mp3"
+            }
+        ];
+
+        const quoteElement = document.getElementById('quote');
+        const artistElement = document.getElementById('artist');
+        const nextBtn = document.getElementById('nextBtn');
+        const audioPlayer = document.getElementById('audioPlayer');
+        let currentQuote = 0;
+
+        // Загружаем первое аудио
+        audioPlayer.src = quotes[currentQuote].audio;
+
+        nextBtn.addEventListener('click', () => {
+            currentQuote++;
+            
+            if (currentQuote < quotes.length - 1) {
+                quoteElement.textContent = quotes[currentQuote].text;
+                artistElement.textContent = quotes[currentQuote].artist;
+                audioPlayer.src = quotes[currentQuote].audio;
+                audioPlayer.play();
+            } 
+            else if (currentQuote === quotes.length - 1) {
+                quoteElement.textContent = quotes[currentQuote].text;
+                artistElement.textContent = quotes[currentQuote].artist;
+                audioPlayer.src = quotes[currentQuote].audio;
+                audioPlayer.play();
+                nextBtn.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
