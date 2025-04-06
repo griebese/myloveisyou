@@ -27,16 +27,23 @@
             position: relative;
             z-index: 1;
         }
-        .photo-placeholder {
-            width: 200px;
-            height: 200px;
+        .photo-container {
+            width: 250px;
+            height: 250px;
             margin: 0 auto 20px;
-            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .song-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .photo-container:hover .song-photo {
+            transform: scale(1.05);
         }
         .quote {
             font-size: 20px;
@@ -89,6 +96,7 @@
         audio {
             width: 100%;
             margin: 20px 0;
+            border-radius: 50px;
         }
     </style>
 </head>
@@ -96,16 +104,13 @@
     <div class="container glitch">
         <h1>Музыкальные цитаты</h1>
         
-        <div class="photo-placeholder">🎵</div>
-        
-        <div class="quote" id="quote">
-            "Плакали, плакали батареи и трубы
-            Я целую, целую, твои нежные губы
-            И мало ли, и мало ли, что подумают люди
-            Я такую, такую, никогда не забуду"
+        <div class="photo-container">
+            <img class="song-photo" id="songPhoto" src="" alt="Обложка песни">
         </div>
         
-        <div class="artist" id="artist">Нервы - Батареи</div>
+        <div class="quote" id="quote"></div>
+        
+        <div class="artist" id="artist"></div>
         
         <audio controls id="audioPlayer">
             <source src="" type="audio/mpeg">
@@ -124,6 +129,7 @@
                 Я такую, такую, никогда не забуду"`,
                 artist: "Нервы - Батареи",
                 audio: "https://mp3uk.net/mp3/files/nervy-batarei-mp3.mp3"
+                image: "https://i.postimg.cc/y6FhTR1k/nervi.jpg"
             },
             {
                 text: `"Мы с тобою танцевали
@@ -132,6 +138,7 @@
                 В паре!"`,
                 artist: "Иван Курочкин - Танцевали",
                 audio: "https://cdn6.sefon.pro/prev/ME-rsfkIHgqzCO9rFU5big/1743987357/782/%D0%98%D0%B2%D0%B0%D0%BD%20%D0%9A%D1%83%D1%80%D0%BE%D1%87%D0%BA%D0%B8%D0%BD%20-%20%D0%A2%D0%B0%D0%BD%D1%86%D0%B5%D0%B2%D0%B0%D0%BB%D0%B8%20%28192kbps%29.mp3"
+                image: "https://i.postimg.cc/Gm3jtp19/ivankur.jpg"
             },
             {
                 text: `"Люби меня днями-ночами
@@ -140,6 +147,7 @@
                 Днями-ночами, днями-ночами"`,
                 artist: "pyrokinesis, МУККА - Днями-ночами",
                 audio: "https://mp3uk.net/mp3/files/pyrokinesis-mukka-dnyami-nochami-mp3.mp3"
+                image: "https://i.postimg.cc/yYyP7Ztw/dnyamy.jpg"
             },
             {
                 text: `"Ментальная коррозия, любовь и микродозинг
@@ -148,6 +156,7 @@
                 Я синий, как глаза твои, синие, как озеро"`,
                 artist: "СМН, МУККА - паранойя",
                 audio: "https://mp3uk.net/mp3/files/cmh-mukka-paranojya-mp3.mp3"
+                image: "https://i.postimg.cc/x1FLdyRF/paranoja.png"
             },
             {
                 text: `"Для тебя, конечно, есть звёзды
@@ -155,6 +164,7 @@
                 Нам достанется лишь то, что не получится забрать (никогда)"`,
                 artist: "mzlff - для тебя",
                 audio: "https://mp3uk.net/mp3/files/mzlff-dlya-tebya-mp3.mp3"
+                image: "https://i.postimg.cc/KjyP2GNG/mzlff.jpg"
             },
             {
                 text: `"Я хочу быть с тобой
@@ -163,6 +173,7 @@
                 Я хочу быть с тобой, и я буду с тобой"`,
                 artist: "Nautilus Pompilius - Я хочу быть с тобой",
                 audio: "https://mp3uk.net/mp3/files/nautilus-pompilius-ya-hochu-byt-s-toboj-mp3.mp3"
+                image: "https://i.postimg.cc/Kjrnc6qn/Nautilus-Pompilius.jpg"
             },
             {
                 text: `"Позови меня с собой
@@ -175,6 +186,7 @@
                 Обретают снова силу высоты"`,
                 artist: "Palina - Позови меня с собой",
                 audio: "https://mp3uk.net/mp3/files/sol-pozovi-menya-s-soboj-palina-remix-mp3.mp3"
+                image: "https://i.postimg.cc/wTgX4BMF/Palina.jpg"
             },
             {
                 text: `"Если хочешь плакать, то я буду плакать тоже
@@ -183,6 +195,7 @@
                 Всё вокруг тупое, поэтому я с тобою"`,
                 artist: "ssshhhiiittt - танцы",
                 audio: "https://mp3uk.net/mp3/files/ssshhhiiittt-tancy-mp3.mp3"
+                image: "https://i.postimg.cc/7LF73Hj3/ssshhhiiittt.jpg"
             },
             {
                 text: `"Как тебя покорить?
@@ -193,6 +206,7 @@
                 Близок я или также всё далёк? Или очень далёк"`,
                 artist: "Перемотка - Как тебя покорить?",
                 audio: "https://muzux.net/uploads/music/2021/06/Peremotka_Kak_tebya_pokorit.mp3"
+                image: "https://postimg.cc/hfQS07Yc"
             },
             {
                 text: `"Ты самая красивая
@@ -201,6 +215,7 @@
                 Ты счастье долгожданное"`,
                 artist: "Mada - самая (The most)",
                 audio: "https:///mp3uk.net/mp3/files/mada-ty-samaya-krasivaya-ty-samaya-zhelannaya-speed-up-mp3.mp3"
+                image: "https://i.postimg.cc/HLcX8cvW/samaja.jpg"
             },
             {
                 text: `"Я растворяюсь в дожде, распадаюсь на фотоны
@@ -209,6 +224,7 @@
                 Ты, как и я, за неспешный флоу"`,
                 artist: "AsteraSounds - Рассвет - Speed Up",
                 audio: "https://muzdark.net/uploads/music/2024/05/AsteraSounds_A_Kalita_Rassvet_speed_up.mp3"
+                image: "https://i.postimg.cc/28DGpwcQ/astera.jpg"
             },
             {
                 text: `"Я хочу тебе сказать одно
@@ -220,6 +236,7 @@
                 Я хочу тебя одну"`,
                 artist: "Руслан Утюг - Предел мечты",
                 audio: "https://cdn7.sefon.pro/prev/9knIwnpk26RL3zbGUc1R0Q/1743988121/293/%D0%A0%D1%83%D1%81%D0%BB%D0%B0%D0%BD%20%D0%A3%D1%82%D1%8E%D0%B3%20-%20%D0%9F%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%20%D0%9C%D0%B5%D1%87%D1%82%D1%8B%20%28192kbps%29.mp3"
+                image: "https://i.postimg.cc/pXCDwtnv/predel.jpg"
             },
             {
                 text: `"Я подарю тебе небо, подарю тебе стикер
@@ -227,6 +244,7 @@
                 Покажу тебе Питер, покажу тебе Питер"`,
                 artist: "CMH & Lida - СТИКЕР",
                 audio: "https://mp3uk.net/mp3/files/cmh-lida-stiker-mp3.mp3"
+                image: "https://i.postimg.cc/pTKjqNtg/stiker.jpg"
             },
             {
                 text: `"Хочешь сладких апельсинов?
@@ -235,6 +253,7 @@
                 Что мешают спать?"`,
                 artist: "Земфира - Хочешь?",
                 audio: "https://mp3uk.net/mp3/files/zemfira-hochesh-mp3.mp3"
+                image: "https://i.postimg.cc/prxFS0Wy/xoches.jpg"
             },
             {
                 text: `"Я искала тебя, годами долгими
@@ -243,6 +262,7 @@
                 И в день, когда нашла, с ума сошла"`,
                 artist: "Земфира - Искала",
                 audio: "https://mp3uk.net/mp3/files/zemfira-iskala-mp3.mp3"
+                image: "https://i.postimg.cc/6pHfvN9c/iskala.jpg"
             },
             {
                 text: `"Цілуй мене і ваби, падай зі мною в кульбаби
@@ -251,6 +271,7 @@
                 Цілого життя нам мало, було би два — віддала би тобі"`,
                 artist: "Тоня Матвієнко - Кульбаби",
                 audio: "https://mp3uk.net/mp3/files/tonya-matviyenko-kulbabi-mp3.mp3"
+                image: "https://i.postimg.cc/HxMwRcbv/kulbabi.jpg"
             },
             {
                 text: `"Если честно?
@@ -262,12 +283,14 @@
                 Отелло, Дездемона, Моника и всё в таком ключе"`,
                 artist: "Pyrokinesis - Цветами радуги",
                 audio: "https://mp3uk.net/mp3/files/pyrokinesis-cvetami-radugi-mp3.mp3"
+                image: "https://i.postimg.cc/FHKjmnjL/raduga.jpg"
             },
             {
                 text: `"А у меня во дворе, ходит девочка с каре.
                 И я так в неё влюблен, и я так в неё влюблен."`,
                 artist: "МУККА - Девочка с каре",
                 audio: "https://cdn7.sefon.pro/prev/mUbz6-M0AsB1vi7g2p_LRQ/1743988290/221/%D0%9C%D1%83%D0%BA%D0%BA%D0%B0%20-%20%D0%94%D0%B5%D0%B2%D0%BE%D1%87%D0%BA%D0%B0%20%D0%A1%20%D0%9A%D0%B0%D1%80%D0%B5%20%28192kbps%29.mp3"
+                image: "https://i.postimg.cc/BvXc5wb0/kare.jpg"
             },
             {
                 text: `"Хочешь, я возьму кредит чтобы свозить тебя на море?
@@ -276,32 +299,39 @@
                 Лишь бы стало тебе лучше и перестала грустить"`,
                 artist: "ФРИК ПАТИ - Красота в глазах смотрящего",
                 audio: "https://cdn9.sefon.pro/prev/FY2ZIlJ8T0UKGAj4K-Azjw/1743988310/518/%D0%A4%D1%80%D0%B8%D0%BA%20%D0%9F%D0%B0%D1%82%D0%B8%20-%20%D0%9A%D1%80%D0%B0%D1%81%D0%BE%D1%82%D0%B0%20%D0%92%20%D0%93%D0%BB%D0%B0%D0%B7%D0%B0%D1%85%20%D0%A1%D0%BC%D0%BE%D1%82%D1%80%D1%8F%D1%89%D0%B5%D0%B3%D0%BE%20%28192kbps%29.mp3"
+                image: "https://i.postimg.cc/DzHQxd4b/krasota.jpg"
             }
+
         ];
 
         const quoteElement = document.getElementById('quote');
         const artistElement = document.getElementById('artist');
         const nextBtn = document.getElementById('nextBtn');
         const audioPlayer = document.getElementById('audioPlayer');
+        const songPhoto = document.getElementById('songPhoto');
         let currentQuote = 0;
 
-        // Загружаем первое аудио
-        audioPlayer.src = quotes[currentQuote].audio;
+        function loadQuote(index) {
+            const quote = quotes[index];
+            quoteElement.textContent = quote.text;
+            artistElement.textContent = quote.artist;
+            audioPlayer.src = quote.audio;
+            songPhoto.src = quote.image;
+            songPhoto.alt = quote.artist;
+        }
+
+        // Загружаем первый трек
+        loadQuote(currentQuote);
 
         nextBtn.addEventListener('click', () => {
             currentQuote++;
             
-            if (currentQuote < quotes.length - 1) {
-                quoteElement.textContent = quotes[currentQuote].text;
-                artistElement.textContent = quotes[currentQuote].artist;
-                audioPlayer.src = quotes[currentQuote].audio;
+            if (currentQuote < quotes.length) {
+                loadQuote(currentQuote);
                 audioPlayer.play();
-            } 
-            else if (currentQuote === quotes.length - 1) {
-                quoteElement.textContent = quotes[currentQuote].text;
-                artistElement.textContent = quotes[currentQuote].artist;
-                audioPlayer.src = quotes[currentQuote].audio;
-                audioPlayer.play();
+            }
+            
+            if (currentQuote === quotes.length - 1) {
                 nextBtn.style.display = 'none';
             }
         });
