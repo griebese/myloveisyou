@@ -17,9 +17,9 @@
         }
         .button-container {
             display: flex;
-            flex-direction: column;
             gap: 20px;
-            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .button {
             width: 250px;
@@ -28,7 +28,7 @@
             color: white;
             text-align: center;
             border: none;
-            border-radius: 50px; /* Сильное скругление */
+            border-radius: 50px;
             cursor: pointer;
             background: linear-gradient(135deg, #BA55D3, #9400D3);
             box-shadow: 0 8px 0 #6A0DAD, 0 15px 20px rgba(0, 0, 0, 0.3);
@@ -61,22 +61,19 @@
         <button class="button" id="btn3">ЖМЯК.. ну просто ЖМЯК</button>
     </div>
 
-    <!-- Скрытый аудиоэлемент для звука -->
     <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3" preload="auto"></audio>
 
     <script>
-        // Звук при клике на любую кнопку
         const buttons = document.querySelectorAll('.button');
         const clickSound = document.getElementById('clickSound');
         
         buttons.forEach(button => {
             button.addEventListener('click', function() {
-                clickSound.currentTime = 0; // Перемотка звука в начало
+                clickSound.currentTime = 0;
                 clickSound.play();
                 
-                // Дополнительные действия для каждой кнопки
                 if (this.id === 'btn1') {
-                    alert('Не грусти! Вот тебе виртуальный цветок 🌸');
+                    window.location.href = 'shtirlitz.html';
                 } else if (this.id === 'btn2') {
                     alert('Лови идею: порисуй звёзды на окне! ✨');
                 } else {
