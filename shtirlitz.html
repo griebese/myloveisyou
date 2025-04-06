@@ -136,12 +136,16 @@
         nextBtn.addEventListener('click', () => {
             currentJoke = (currentJoke + 1) % jokes.length;
             jokeElement.innerHTML = jokes[currentJoke];
-            
-            if (currentJoke !== 0) {
-                jokeElement.innerHTML += '<div class="special-note">(Этот тот самый анекдот, который стал неким знаком для наших отношений, хд ;)</div>';
+
+            const specialNote = jokeElement.querySelector('.special-note');
+            if (currentJoke === 0) {
+                if (!specialNote) {
+                    jokeElement.innerHTML += '<div class="special-note">(Этот тот самый анекдот, который стал неким знаком для наших отношений, хд ;)</div>';
+                }
             } else {
-                const note = jokeElement.querySelector('.special-note');
-                if (note) note.remove();
+                if (specialNote) {
+                    specialNote.remove();
+                }
             }
         });
     </script>
