@@ -17,7 +17,6 @@
             color: white;
             text-align: center;
             overflow-x: hidden;
-            position: relative;
         }
         .container {
             max-width: 600px;
@@ -121,30 +120,6 @@
             transform: translateY(2px);
             box-shadow: 0 3px 0 #CC7000;
         }
-        .home-button {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            padding: 12px 25px;
-            font-size: 16px;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            background: linear-gradient(135deg, #BA55D3, #9932CC);
-            box-shadow: 0 5px 0 #6A0DAD;
-            transition: all 0.3s;
-            font-weight: bold;
-            z-index: 100;
-        }
-        .home-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 0 #6A0DAD;
-        }
-        .home-button:active {
-            transform: translateY(2px);
-            box-shadow: 0 3px 0 #6A0DAD;
-        }
     </style>
 </head>
 <body>
@@ -167,8 +142,6 @@
         <button class="next-button" id="nextBtn">Далее</button>
         <button class="repeat-button" id="repeatBtn" style="display: none;">Повтор</button>
     </div>
-
-    <a href="index.html" class="home-button">НА ГЛАВНУЮ</a>
 
     <script>
         const quotes = [
