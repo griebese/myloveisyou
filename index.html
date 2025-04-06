@@ -82,14 +82,9 @@
         });
         
         // Кнопка "Просто ЖМЯК" — случайное сообщение
-        btnRandom.addEventListener('click', () => {
+        btnBored.addEventListener('click', () => {
             clickSound.play();
-            const messages = [
-                'Ты великолепен! 💫',
-                'ЖМЯК — это сила! 💪',
-                'Улыбнись, как будто ты только что жмякнул! 😊'
-            ];
-            alert(messages[Math.floor(Math.random() * messages.length)]);
+            window.location.href = 'myrmyr.html';
         });
     </script>
 </body>
