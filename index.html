@@ -56,35 +56,40 @@
 <body>
     <h1>ЖМЯКНИ МЕНЯ!</h1>
     <div class="button-container">
-        <button class="button" id="btn1">ЖМЯК если тебе грустно</button>
-        <button class="button" id="btn2">ЖМЯК если тебе скучно</button>
-        <button class="button" id="btn3">ЖМЯК.. ну просто ЖМЯК</button>
+        <button class="button" id="btnSad">ЖМЯК если тебе грустно</button>
+        <button class="button" id="btnBored">ЖМЯК если тебе скучно</button>
+        <button class="button" id="btnRandom">ЖМЯК.. ну просто ЖМЯК</button>
     </div>
 
     <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3" preload="auto"></audio>
 
     <script>
-        const buttons = document.querySelectorAll('.button');
+        const btnSad = document.getElementById('btnSad');
+        const btnBored = document.getElementById('btnBored');
+        const btnRandom = document.getElementById('btnRandom');
         const clickSound = document.getElementById('clickSound');
         
-        buttons.forEach(button => {
-            button.addEventListener('click', function() {
-                clickSound.currentTime = 0;
-                clickSound.play();
-                
-                if (this.id === 'btn1') {
-                    window.location.href = 'shtirlitz.html';
-                } else if (this.id === 'btn2') {
-                    alert('Лови идею: порисуй звёзды на окне! ✨');
-                } else {
-                    const messages = [
-                        'Ты великолепен!',
-                        'ЖМЯК — это сила!',
-                        'Улыбнись, как будто ты только что жмякнул!'
-                    ];
-                    alert(messages[Math.floor(Math.random() * messages.length)]);
-                }
-            });
+        // Кнопка "Грустно" — переход на страницу с мотивацией
+        btnSad.addEventListener('click', () => {
+            clickSound.play();
+            window.location.href = 'motivation.html'; // Создайте этот файл
+        });
+        
+        // Кнопка "Скучно" — переход на анекдоты
+        btnBored.addEventListener('click', () => {
+            clickSound.play();
+            window.location.href = 'shtirlitz.html';
+        });
+        
+        // Кнопка "Просто ЖМЯК" — случайное сообщение
+        btnRandom.addEventListener('click', () => {
+            clickSound.play();
+            const messages = [
+                'Ты великолепен! 💫',
+                'ЖМЯК — это сила! 💪',
+                'Улыбнись, как будто ты только что жмякнул! 😊'
+            ];
+            alert(messages[Math.floor(Math.random() * messages.length)]);
         });
     </script>
 </body>
