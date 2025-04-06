@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ЖМЯК-ЖМЯК</title>
+    <title>ЖМЯК-кнопки</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,11 +54,11 @@
     </style>
 </head>
 <body>
-    <h1>ЖМЯКНИ!</h1>
+    <h1>ЖМЯКНИ МЕНЯ!</h1>
     <div class="button-container">
         <button class="button" id="btnSad">ЖМЯК если тебе грустно</button>
         <button class="button" id="btnBored">ЖМЯК если тебе скучно</button>
-        <button class="button" id="btnRandom">ЖМЯК.. ну просто ЖМЯК!</button>
+        <button class="button" id="btnRandom">ЖМЯК.. ну просто ЖМЯК</button>
     </div>
 
     <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3" preload="auto"></audio>
@@ -72,7 +72,7 @@
         // Кнопка "Грустно" — переход на страницу с мотивацией
         btnSad.addEventListener('click', () => {
             clickSound.play();
-            window.location.href = 'motivation.html'; // Создайте этот файл
+            window.location.href = 'motivation.html';
         });
         
         // Кнопка "Скучно" — переход на анекдоты
@@ -81,10 +81,10 @@
             window.location.href = 'shtirlitz.html';
         });
         
-        // Кнопка "Просто ЖМЯК" — случайное сообщение
-        btnBored.addEventListener('click', () => {
+        // Кнопка "Просто ЖМЯК" — переход на murmur.html
+        btnRandom.addEventListener('click', () => {
             clickSound.play();
-            window.location.href = 'myrmyr.html';
+            window.location.href = 'murmur.html';
         });
     </script>
 </body>
