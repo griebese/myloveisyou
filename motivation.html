@@ -80,6 +80,31 @@
             50% { transform: translate(20px, -60px) rotate(-10deg); }
             75% { transform: translate(-40px, -30px) rotate(5deg); }
         }
+        .go-home-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #BA55D3, #9932CC);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #7A3293, 0 8px 15px rgba(0, 0, 0, 0.2);
+            z-index: 20;
+            transition: all 0.2s;
+        }
+        .go-home-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .go-home-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 3px 0 #7A3293;
+        }
     </style>
 </head>
 <body>
@@ -102,6 +127,9 @@
         
         <button class="next-button" id="nextBtn">Продолжить ☀️</button>
     </div>
+
+    <!-- Кнопка НА ГЛАВНУЮ -->
+    <a href="index.html" class="go-home-button">НА ГЛАВНУЮ</a>
 
     <script>
         const messages = [
