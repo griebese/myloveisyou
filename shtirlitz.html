@@ -70,6 +70,32 @@
             margin-top: 10px;
             font-style: italic;
         }
+
+        /* Стиль для кнопки на главную */
+        .home-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 150px;
+            padding: 12px 25px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #BA55D3, #9932CC);
+            box-shadow: 0 8px 0 #6A0DAD, 0 15px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .home-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 3px 0 #6A0DAD;
+        }
     </style>
 </head>
 <body>
@@ -88,6 +114,8 @@
         
         <button class="next-button" id="nextBtn">Далее</button>
     </div>
+
+    <button class="home-button" onclick="window.location.href='index.html'">НА ГЛАВНУЮ</button>
 
     <script>
         const jokes = [
