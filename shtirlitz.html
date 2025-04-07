@@ -17,16 +17,19 @@
             text-align: center;
             padding: 20px;
         }
+
         .container {
             max-width: 800px;
             width: 90%;
         }
+
         .gif-container img {
             max-width: 300px;
             border-radius: 10px;
             margin: 20px 0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
+
         .joke {
             font-size: 20px;
             margin: 30px 0;
@@ -35,6 +38,7 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
+
         .next-button {
             width: 200px;
             padding: 12px 25px;
@@ -48,22 +52,27 @@
             transition: all 0.2s;
             font-weight: bold;
         }
+
         .next-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
+
         .next-button:active {
             transform: translateY(2px);
             box-shadow: 0 3px 0 #6A0DAD;
         }
+
         h1 {
             color: #9400D3;
             margin-bottom: 10px;
         }
+
         .subtitle {
             color: #666;
             margin-bottom: 30px;
         }
+
         .special-note {
             font-size: 14px;
             color: #9400D3;
@@ -71,30 +80,40 @@
             font-style: italic;
         }
 
-        /* Стиль для кнопки на главную */
-        .home-button {
+        /* Плавающая оранжевая кнопка-домик */
+        .floating-home-button {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 150px;
-            padding: 12px 25px;
-            font-size: 16px;
-            color: white;
+            width: 60px;
+            height: 60px;
+            background-color: orange;
             border: none;
-            border-radius: 50px;
+            border-radius: 50%;
+            font-size: 28px;
+            color: white;
             cursor: pointer;
-            background: linear-gradient(135deg, #BA55D3, #9932CC);
-            box-shadow: 0 8px 0 #6A0DAD, 0 15px 20px rgba(0, 0, 0, 0.3);
-            transition: all 0.2s;
-            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1000;
         }
-        .home-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+        .floating-home-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
         }
-        .home-button:active {
-            transform: translateY(2px);
-            box-shadow: 0 3px 0 #6A0DAD;
+
+        @media (max-width: 600px) {
+            .floating-home-button {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 15px;
+                right: 15px;
+            }
         }
     </style>
 </head>
@@ -102,20 +121,21 @@
     <div class="container">
         <h1>АНЕКДОТИКИ-КОТИКИ</h1>
         <p class="subtitle">ШТИРЛИЦ БОМБА-ПУШКА-ПЕТАРДА!</p>
-        
+
         <div class="gif-container">
             <img src="https://c.tenor.com/rTbP5qSDIZsAAAAd/tenor.gif" alt="Штирлиц">
         </div>
-        
+
         <div class="joke" id="joke">
             Штирлиц засунул вилку в розетку, но ему сказали, что ложкой будет удобнее
             <div class="special-note">(Этот тот самый анекдот, который стал неким знаком для наших отношений, хд ;)</div>
         </div>
-        
+
         <button class="next-button" id="nextBtn">Далее</button>
     </div>
 
-    <button class="home-button" onclick="window.location.href='index.html'">НА ГЛАВНУЮ</button>
+    <!-- Плавающая кнопка-домик -->
+    <button class="floating-home-button" onclick="window.location.href='index.html'">🏠</button>
 
     <script>
         const jokes = [
