@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Для моей милашечки</title>
+    <title>Для тебя, солнышко!</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -13,109 +13,122 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background: #fff0f5;
+            background: linear-gradient(135deg, #BA55D3, #9400D3);
+            color: white;
             text-align: center;
-            overflow: hidden;
-            position: relative;
+            overflow-x: hidden;
+            padding: 20px;
         }
         .container {
+            width: 100%;
             max-width: 600px;
-            padding: 20px;
-            z-index: 10;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin: 10px 0;
+        }
+        .gif-container {
+            margin: 15px auto;
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         .gif-container img {
-            max-width: 250px;
-            border-radius: 15px;
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .message {
             font-size: 18px;
             line-height: 1.6;
-            white-space: pre-line;
             margin: 20px 0;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            white-space: pre-line;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
         .next-button {
-            width: 200px;
-            padding: 12px 25px;
-            font-size: 16px;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
-            box-shadow: 0 5px 0 #D45D5D, 0 8px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s;
-            font-weight: bold;
-            margin-top: 20px;
-            z-index: 10;
-        }
-        .next-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-        .next-button:active {
-            transform: translateY(2px);
-            box-shadow: 0 3px 0 #D45D5D;
-        }
-        h1 {
-            color: #FF6B6B;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-        .heart {
-            position: absolute;
-            font-size: 24px;
-            animation: float 8s ease-in-out infinite;
-            opacity: 0.7;
-            z-index: 1;
-        }
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(50px, -30px) rotate(10deg); }
-            50% { transform: translate(20px, -60px) rotate(-10deg); }
-            75% { transform: translate(-40px, -30px) rotate(5deg); }
-        }
-        .go-home-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
+            width: 180px;
             padding: 12px 20px;
             font-size: 16px;
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
             color: white;
-            background: linear-gradient(135deg, #BA55D3, #9932CC);
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 5px 0 #7A3293, 0 8px 15px rgba(0, 0, 0, 0.2);
-            z-index: 20;
-            transition: all 0.2s;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            margin: 15px 0;
+            font-weight: bold;
         }
-        .go-home-button:hover {
+        .next-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        .next-button:active {
+            transform: translateY(1px);
+        }
+        h1 {
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            font-size: 24px;
+        }
+        .signature {
+            font-style: italic;
+            margin-top: 25px;
+            opacity: 0.8;
+            font-size: 16px;
+        }
+        .restart-button {
+            width: 180px;
+            padding: 12px 20px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            margin-top: 20px;
+            font-weight: bold;
+            display: none;
+        }
+        .restart-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
-        .go-home-button:active {
-            transform: translateY(2px);
-            box-shadow: 0 3px 0 #7A3293;
+        .restart-button:active {
+            transform: translateY(1px);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+            .message {
+                font-size: 16px;
+            }
+            .gif-container {
+                width: 180px;
+                height: 180px;
+            }
+            h1 {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Плавающие сердечки -->
-    <div id="hearts-container"></div>
-
     <div class="container">
-        <h1>Для моей вселенной 🚀</h1>
+        <h1>Для моего солнышка 🌞</h1>
         
         <div class="gif-container">
-            <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjh5NXhhN3JlM3RjZ2YyZzY5N2Y1c2prNWZ3YTJwNHFhaHJncWF5NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1JmGiBtqTuehfYxuy9/giphy.gif" alt="Обнимашки">
+            <img src="https://media.giphy.com/media/Lp5wuqMOmLUaAn6Dk5/giphy.gif" alt="Обнимашки">
         </div>
         
         <div class="message" id="message">
@@ -126,108 +139,112 @@
         </div>
         
         <button class="next-button" id="nextBtn">Продолжить ☀️</button>
+        <button class="restart-button" id="restartBtn">Прочесть ещё раз ❤️</button>
+        
+        <div class="signature" id="signature"></div>
     </div>
-
-    <!-- Кнопка НА ГЛАВНУЮ -->
-    <a href="index.html" class="go-home-button">НА ГЛАВНУЮ</a>
 
     <script>
         const messages = [
-            `Ты моя радость, ты — моё счастье.
-            Быть с тобой — это то, чего я только желаю!
-            Ты невероятная, ты неповторимая
-            И с тобой никто не сравнится!`,
+            {
+                text: `Ты моя радость, ты — моё счастье.
+                Быть с тобой — это то, чего я только желаю!
+                Ты невероятная, ты неповторимая
+                И с тобой никто не сравнится!`,
+                signature: ""
+            },
+            {
+                text: `Все трудности нужно преодолевать вместе!
+                Поэтому знай, ты — не одна!
+                Если ты в чем-то нуждаешься — дай мне знать!
+                Вместе мы — сила! Вместе мы справимся!`,
+                signature: ""
+            },
+            {
+                text: `Ты сильная — помни об этом!
+                Но если тебе понадобится опора — я рядом
+                Когда тебе станет грустно — я буду с тобой
+                Если будет больно — не оставлю
+                Мы пройдем через это вместе!`,
+                signature: ""
+            },
+            {
+                text: `Может, я нечасто посвящаю тебе стихи,
+                ведь поэзия дается мне нелегко!
+                Рифма — мой давний недруг, мы с ним совершенно не ладим
+                Но вот те строки, которые я посвятила ИМЕННО ТЕБЕ!`,
+                signature: ""
+            },
+            {
+                text: `И прекрасный ты всех, всех цветов неземных
+                Воплощение света среди дней ледяных, 
+                Мне улыбка твоя - будто тысячи звезд,
+                словно солнечный луч пробивающий в гроз
 
-            `Все трудности нужно преодолевать вместе!
-            Поэтому знай, ты — не одна!
-            Если ты в чем-то нуждаешься — дай мне знать!
-            Вместе мы — сила! Вместе мы справимся!`,
+                Каждый миг мне с тобой - это счастья момент
+                Ведь с тобой есть всегда - и тепло, и успех
+                Моя встреча с тобой - это праздник, мечта,
+                Ты поддержка, ты радость, ты улыбка моя
+                Верю я, что февраль смог свести нас неспроста!`,
+                signature: ""
+            },
+            {
+                text: `Твои глаза как бескрайний океан,
+                сокрыт в них целый мир глубин,
+                Позволь мне, не зная страха,
+                заглянуть в них и стать твоим
 
-            `Ты сильная — помни об этом!
-            Но если тебе понадобится опора — я рядом
-            Когда тебе станет грустно — я буду с тобой
-            Если будет больно — не оставлю
-            Мы пройдем через это вместе!`,
+                Твоим спасеньем, счастьем, радостью
+                надеждой, светом в час ночной,
+                с тобой в груди живет покой,
+                и все, что нужно мне — это ты
 
-            `Может, я нечасто посвящаю тебе стихи,
-            ведь поэзия дается мне нелегко!
-            Рифма — мой давний недруг, мы с ним совершенно не ладим
-            Но вот те строки, которые я посвятила ИМЕННО ТЕБЕ!`,
-
-            `И прекрасный ты всех, всех цветов неземных
-            Воплощение света среди дней ледяных, 
-            Мне улыбка твоя - будто тысячи звезд,
-            словно солнечный луч пробивающий в гроз
-
-            Каждый миг мне с тобой - это счастья момент
-            Ведь с тобой есть всегда - и тепло, и успех
-            Моя встреча с тобой - это праздник, мечта,
-            Ты поддержка, ты радость, ты улыбка моя
-            Верю я, что февраль смог свести нас неспроста!`,
-
-            `Твои глаза как бескрайний океан,
-            сокрыт в них целый мир глубин,
-            Позволь мне, не зная страха,
-            заглянуть в них и стать твоим
-
-            Твоим спасеньем, счастьем, радостью
-            надеждой, светом в час ночной,
-            с тобой в груди живет покой,
-            и все, что нужно мне — это ты
-
-            Ты — моя мечта, любовь и свет,
-            В тебе — вся ласка и тепло
-            Ты — мир мой, моя отрада
-            С тобой я наконец нашла свое`,
-
-            `Твои глаза — чудеса,
-            в них скрыта тайна волшебства,
-            они как сказка, как мечта,
-            в них я растворяюсь навсегда
-
-            В глазах твоих найду судьбу,
-            свой яркий путь в судьбоносную мечту,
-            иных отроду не найти,
-            ведь у тебя они одни
-
-            И мы с тобою как во сне,
-            где светит свет и мы вне бед,
-            и только счастье впереди,
-            и в мире этом только мы одни`,
-
-            `Я очень люблю тебя, моё солнышко 💖💝`
+                Ты — моя мечта, любовь и свет,
+                В тебе — вся ласка и тепло
+                Ты — мир мой, моя отрада
+                С тобой я наконец нашла свое`,
+                signature: ""
+            },
+            {
+                text: `Ты — всё для меня: моя умница, моя гордость, моя опора, моя радость, моё счастье. 
+                Я горжусь каждым твоим шагом и всегда восхищаюсь тем, как ты находишь выход даже из самых сложных ситуаций. 
+                Возможно, я не говорила тебе этого раньше, но я безумно рада, что ты приняла решение переехать в мою землю. 
+                Ты невероятно умна и сильна, и, пожалуйста, верь в себя так, как верю в тебя я, а может, и больше.`,
+                signature: "Очень люблю тебя, моя радость."
+            }
         ];
-
-        // Создаем плавающие сердечки
-        const heartsContainer = document.getElementById('hearts-container');
-        const heartEmojis = ['💖', '💝', '💘', '💗', '💓', '💞', '💕'];
-        
-        for (let i = 0; i < 15; i++) {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = Math.random() * 100 + 'vh';
-            heart.style.animationDelay = Math.random() * 5 + 's';
-            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-            heartsContainer.appendChild(heart);
-        }
 
         const messageElement = document.getElementById('message');
         const nextBtn = document.getElementById('nextBtn');
+        const restartBtn = document.getElementById('restartBtn');
+        const signatureElement = document.getElementById('signature');
         let currentMessage = 0;
+
+        function showMessage(index) {
+            messageElement.textContent = messages[index].text;
+            signatureElement.textContent = messages[index].signature;
+            
+            if (index === messages.length - 1) {
+                nextBtn.style.display = 'none';
+                restartBtn.style.display = 'block';
+            } else {
+                nextBtn.style.display = 'block';
+                restartBtn.style.display = 'none';
+            }
+        }
 
         nextBtn.addEventListener('click', () => {
             currentMessage++;
-            
-            if (currentMessage < messages.length - 1) {
-                messageElement.textContent = messages[currentMessage];
-            } 
-            else if (currentMessage === messages.length - 1) {
-                messageElement.textContent = messages[currentMessage];
-                nextBtn.style.display = 'none';
-            }
+            showMessage(currentMessage);
         });
+
+        restartBtn.addEventListener('click', () => {
+            currentMessage = 0;
+            showMessage(currentMessage);
+        });
+
+        // Загружаем первое сообщение
+        showMessage(currentMessage);
     </script>
 </body>
 </html>
